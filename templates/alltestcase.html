@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>real-name-auth json</title>
+    <link rel="stylesheet" href="/static/css1/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<form action="" method="post" class="smart-green">
+	<div id="box">
+        <h1>关联用例显示
+            <span>关联用例:
+                <table cellpadding="0" cellspacing="0">
+                    {% if rele_cases %}
+                        {% for assocase in rele_cases %}
+                            <tr>
+                                <td>
+                                    <a href='http://ynqbsh.com:8000/testcase/more/{{ assocase.id }}/'>第【{{ forloop.counter }}】条关联用例---【{{ assocase.case_title }}】查看</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                            <tr>
+                                <td>
+                                    <a>无关联用例</a>
+                                </td>
+                            </tr>
+                    {% endif %}
+                </table>
+
+{#                {% if assocase.id %}#}
+{#                    <a href='http://ynqbsh.com:8000/testcase/display/{{ assocase.id }}/'>关联用例查看</a>#}
+{#                {% else %}#}
+{#                    <a>无关联用例</a>#}
+{#                {% endif %}#}
+            </span>
+        </h1>
+{#        <label>测试项目:</label><input id="test_project" name="test_project" type="text" value="{{ testcase.test_project }}" readonly="readonly"/>#}
+{#        <label>测试模块:</label><input id="test_module" name="test_module" type="text" value="{{ testcase.test_module }}" readonly="readonly"/>#}
+{#        <label>测试页面:</label><input id="test_page" name="test_page" type="text" value="{{ testcase.test_page }}" readonly="readonly"/>#}
+{#        <label>功能点:</label><textarea id="requirement_function" name="requirement_function" readonly="readonly"> {{ testcase.requirement_function }}</textarea>#}
+{#        <br/>#}
+{#        <br/>#}
+{#        <label>用例优先级:</label>#}
+{#                        <input type="radio"  name="case_priority"  readonly="readonly" value="P0" {% if testcase.case_priority == 'P0' %}checked="checked"{% endif %}>冒烟用例#}
+{#                        <input type="radio" name="case_priority"  readonly="readonly"  value="P1" {% if testcase.case_priority  == 'P1' %}checked="checked"{% endif %}>系统的重要功能用例#}
+{#                        <input type="radio"  name="case_priority"  readonly="readonly" value="P2" {% if testcase.case_priority == 'P2' %}checked="checked"{% endif %}>系统的一般功能用例#}
+{#                        <input type="radio" name="case_priority" readonly="readonly"   value="P3" {% if testcase.case_priority  == 'P3' %}checked="checked"{% endif %}>极低级别的用例#}
+{#        <br/>#}
+{#        <br/>#}
+{#        <label>流程类型:</label>#}
+{#                        <input type="radio"  name="case_process_type" readonly="readonly" value="normal" {% if testcase.case_process_type == 'normal' %}checked="checked"{% endif %}>正常流#}
+{#                        <input type="radio" name="case_process_type"  readonly="readonly"  value="unusual" {% if testcase.case_process_type  == 'unusual' %}checked="checked"{% endif %}>异常流#}
+{#        <br/>#}
+        <br/>
+        <label>测试用例名称:</label><input id="case_title" name="case_title" type="text" value="{{ testcase.case_title }}" readonly="readonly" />
+        <label>测试用例前置条件:</label><textarea id="case_precondition" name="case_precondition" readonly="readonly"> {{ testcase.case_precondition }}</textarea>
+        <label>测试用例操作步骤:</label><textarea id="case_step" name="case_step" readonly="readonly"> {{ testcase.case_step  }}</textarea>
+        <label>测试用例预期结果:</label><textarea id="case_expected_result" name="case_expected_result" readonly="readonly"> {{ testcase.case_expected_result }}</textarea>
+        <label>编写备注:</label><textarea id="write_comments" name="write_comments" readonly="readonly" > {{ testcase.write_comments }}</textarea>
+        <br/>
+        <label><a href='http://ynqbsh.com:8000/yinics/testcase/'>返回测试用例列表页</a></label>
+	</div>
+{#    <label>#}
+{#        <span>&nbsp;</span>#}
+{#        <input type="submit" class="button"  value="新增加一条用例"/>#}
+{#    </label>#}
+{#    {% csrf_token %} <!--保证form表提交，是一种安全机制-->#}
+</form>
+
+
+{#{% block custom_js %}  <!--此处是处理"我要学习"表单的js-->#}
+{#<script>#}
+{#    $(function(){#}
+{#        $('#jsStayBtn').on('click', function(){   <!--用户店家按钮操作函数-->#}
+{#            $.ajax({#}
+{#                cache: false,#}
+{#                type: "POST",#}
+{#                url:"{% url "testcase:add_ask" %}",#}
+{#                data:$('#jsStayForm').serialize(),#}
+{#                async: true,#}
+{#                success: function(data) {#}
+{#                    if(data.status == 'success'){ <!--如果提交成功，则弹框提示提交成功-->#}
+                        {#$('#jsStayForm')[0].reset();#}
+{#                        alert("提交成功")#}
+{#                    }else if(data.status == 'fail'){<!--如果提交失败，则返回错误信息-->#}
+                        {#$('#jsCompanyTips').html(data.msg)#}
+{#                        alert("提交失败")#}
+{#                    }#}
+{#                },#}
+{#            });#}
+{#        });#}
+{#    })#}
+{#</script>#}
+{#{% endblock %}   <!--此处可以重写js-->#}
+</body>
+</html>

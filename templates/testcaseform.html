@@ -1,0 +1,115 @@
+{% extends 'testcase.html' %}
+{% block table %}
+    <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>
+                        <label>测试项目:</label>
+                    </td>
+                    <td>
+                        <input id="test_project" name="test_project" type="text" value="{{ testcaseform.test_project.value }}"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>测试模块:</label>
+                    </td>
+                    <td>
+                        <input id="test_module" name="test_module" type="text" value="{{ testcaseform.test_module.value }}"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>测试页面:</label>
+                    </td>
+                    <td>
+                        <input id="test_page" name="test_page" type="text" value="{{ testcaseform.test_page.value }}"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>功能点:</label>
+                    </td>
+                    <td>
+                        <textarea id="requirement_function" name="requirement_function">{{ testcaseform.requirement_function.value }}</textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>用例优先级:</label>
+                    </td>
+                    <td>
+                        <input type="radio"  name="case_priority" value="P0" {% if testcaseform.case_priority.value == 'P0' %}checked="checked"{% endif %}>冒烟用例
+                        <input type="radio" name="case_priority"   value="P1" {% if testcaseform.case_priority.value  == 'P1' %}checked="checked"{% endif %}>系统的重要功能用例
+                        <input type="radio"  name="case_priority"  value="P2" {% if testcaseform.case_priority.value == 'P2' %}checked="checked"{% endif %}>系统的一般功能用例
+                        <input type="radio" name="case_priority"   value="P3" {% if testcaseform.case_priority.value  == 'P3' %}checked="checked"{% endif %}>极低级别的用例
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>流程类型:</label>
+                    </td>
+                    <td>
+                        <input type="radio"  name="case_process_type" value="normal" {% if testcaseform.case_process_type.value == 'normal' %}checked="checked"{% endif %}>正常流
+                        <input type="radio" name="case_process_type"   value="unusual" {% if testcaseform.case_process_type.value  == 'unusual' %}checked="checked"{% endif %}>异常流
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>测试用例名称:</label>
+                    </td>
+                    <td>
+                        <input id="case_title" name="case_title" type="text" value="{{ testcaseform.case_title.value }}"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>测试用例前置条件:</label>
+                    </td>
+                    <td>
+                        <textarea id="case_precondition" name="case_precondition">{{ testcaseform.case_precondition.value }}</textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>测试用例操作步骤:</label>
+                    </td>
+                    <td>
+                        <textarea id="case_step" name="case_step">{{ testcaseform.case_step.value  }}</textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>测试用例预期结果:</label>
+                    </td>
+                    <td>
+                        <textarea id="case_expected_result" name="case_expected_result">{{ testcaseform.case_expected_result.value }}</textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>编写备注:</label>
+                    </td>
+                    <td>
+                        <textarea id="write_comments" name="write_comments">{{ testcaseform.write_comments.value }}</textarea>
+                    </td>
+                </tr>
+    {#            <tr>#}
+    {#                <td>#}
+    {#                    <label>编写人员:</label>#}
+    {#                </td>#}
+    {#                <td>#}
+    {#                    <input id="write_user" name="write_user"  type="text" readonly="readonly"  value="{{ testcase.write_user|default:'' }}"/>#}
+    {#                </td>#}
+    {#            </tr>#}
+            </table>
+{% endblock %}

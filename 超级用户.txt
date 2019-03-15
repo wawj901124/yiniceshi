@@ -1,0 +1,9 @@
+1.在manage.py@djangotest中输入命令：
+	1.createsuperuser   ---新建超级用户
+		bobby(本机数据库的超级用户)
+		1@1.com
+		admin123
+
+		admin（外部数据库的超级用户）
+		1@1.com
+		aibei123

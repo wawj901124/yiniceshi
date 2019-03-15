@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    {% block head %}
+        <meta charset="UTF-8">
+        <title>{% block title %}查看测试用例{% endblock %}</title>
+        <link rel="stylesheet" href="/static/css1/style2.css">
+        <link rel="stylesheet" href="/static/css1/selfstyle1.css">
+    {#    <script type="text/javascript" src="{% static 'js/js.js' %}"></script>#}
+
+    {#    <script type="text/javascript">#}
+    {#        $(function(){#}
+    {#            $('.menuequal ').click(){#}
+                    {#$(this).addClass('menuequal');#}
+    {#                $('.menuequal').removeClass('menuequal');#}
+    {#                $(this).addClass('menuequal2');#}
+    {#            }#}
+    {#        });#}
+    {#      </script>#}
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+    <div id="header">
+        {% block header %}
+            <div class="headerleft">
+                <p><a href="#">测试用例查看</a></p>
+            </div>
+            <div class="headerright">
+                <form action="{% url 'testcase:rela_case' testcase.id %}?page={{ page }}&test_project={{ search_keywords_test_project }}&test_module={{ search_keywords_test_module }}&test_page={{ search_keywords_test_page }}&case_title={{ search_keywords_case_title }}" method="get">
+                    <input id="test_project" name="test_project"  class="fl" type="text" value="{{ search_keywords_test_project }}" placeholder="搜索的项目"/>
+                    <input id="test_module" name="test_module"  class="fl" type="text" value="{{ search_keywords_test_module }}" placeholder="搜索的模块"/>
+                    <input id="test_page" name="test_page"  class="fl" type="text" value="{{ search_keywords_test_page }}" placeholder="搜索的页面"/>
+                    <input id="case_title" name="case_title"  class="fl" type="text" value="{{ search_keywords_case_title }}" placeholder="搜索的测试用例名称"/>
+                    <input type="submit" class="button"  value="搜索">
+                </form>
+            </div>
+        {% endblock %}
+    </div>
+    <!--header_End-->
+
+    <div id="main">
+        {% block main %}
+            <div id="container">
+                {% block container %}
+        {#            <div class="smart-green">#}
+        {#                <h1>关联用例显示#}
+        {#                <br/>#}
+        {#                <span>关联用例:#}
+        {#                    <table cellpadding="0" cellspacing="0">#}
+        {#                        {% if rele_cases %}#}
+        {#                              {% for assocase in rele_cases %}#}
+        {#                                    <tr>#}
+        {#                                        <td>#}
+        {#                                            <a href='http://ynqbsh.com:8000/testcase/sidercasedisplay/{{ assocase.id }}/'>第【{{ forloop.counter }}】条关联用例---【{{ assocase.case_title }}】查看</a>#}
+        {#                                        </td>#}
+        {#                                    </tr>#}
+        {#                              {% endfor %}#}
+        {#                        {% else %}#}
+        {#                                <tr>#}
+        {#                                    <td>#}
+        {#                                        <a>无关联用例</a>#}
+        {#                                    </td>#}
+        {#                                </tr>#}
+        {#                        {% endif %}#}
+        {#                    </table>#}
+        {#                </span>#}
+        {#            </h1>#}
+        {#                <br/>#}
+        {#                <div class="container-hang">#}
+        {#                <label>测试用例名称:</label><input id="case_title" name="case_title" type="text" value="{{ testcase.case_title }}" readonly="readonly" />#}
+        {#                </div>#}
+        {#                <br/>#}
+        {#                <div class="container-hang">#}
+        {#                <label>测试用例前置条件:</label><textarea id="case_precondition" name="case_precondition" readonly="readonly"> {{ testcase.case_precondition }}</textarea>#}
+        {#                </div>#}
+        {#                <br/>#}
+        {#                <div class="container-hang">#}
+        {#                <label>测试用例操作步骤:</label><textarea id="case_step" name="case_step" readonly="readonly"> {{ testcase.case_step  }}</textarea>#}
+        {#                </div>#}
+        {#                <br/>#}
+        {#                <div class="container-hang">#}
+        {#                <label>测试用例预期结果:</label><textarea id="case_expected_result" name="case_expected_result" readonly="readonly"> {{ testcase.case_expected_result }}</textarea>#}
+        {#                </div>#}
+        {#                <br/>#}
+        {#                <div class="container-hang">#}
+        {#                <label>编写备注:</label><textarea id="write_comments" name="write_comments" readonly="readonly" > {{ testcase.write_comments }}</textarea>#}
+        {#                </div>#}
+        {#                <br/>#}
+        {#                <div class="container-hang">#}
+        {#                <label><a href='http://ynqbsh.com:8000/yinics/testcase/'>返回测试用例列表页</a></label>#}
+        {#                </div>#}
+        {#            </div>#}
+                    <form action="" method="post" class="smart-green">
+                        <div>
+                            <h1>关联用例显示
+                                <span>关联用例:
+                                    <div class="box">
+                                        <table cellpadding="0" cellspacing="0">
+                                            {% if rele_cases %}
+                                                {% for assocase in rele_cases %}
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{% url 'testcase:rela_case' assocase.id %}?page={{ page }}&test_project={{ search_keywords_test_project }}&test_module={{ search_keywords_test_module }}&test_page={{ search_keywords_test_page }}&case_title={{ search_keywords_case_title }}">第【{{ forloop.counter }}】条关联用例---【{{ assocase.case_title }}】查看</a>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                            {% else %}
+                                                    <tr>
+                                                        <td>
+                                                            <a>无关联用例</a>
+                                                        </td>
+                                                    </tr>
+                                            {% endif %}
+                                        </table>
+                                    </div>
+
+
+                    {#                {% if assocase.id %}#}
+                    {#                    <a href='http://ynqbsh.com:8000/testcase/display/{{ assocase.id }}/'>关联用例查看</a>#}
+                    {#                {% else %}#}
+                    {#                    <a>无关联用例</a>#}
+                    {#                {% endif %}#}
+                                </span>
+                            </h1>
+                        </div>
+                        <div class="kongbai"></div>
+                        <div class="tabledata">
+                            {% block table %}
+                                <table cellpadding="0" cellspacing="0">
+        {#                        <tr>#}
+        {#                            <td>#}
+        {#                                <label>测试项目:</label>#}
+        {#                            </td>#}
+        {#                            <td>#}
+        {#                                <input id="test_project" name="test_project" type="text" value="{{ testcase.test_project }}" readonly="readonly"/>#}
+        {#                            </td>#}
+        {#                        </tr>#}
+
+        {#                        <tr>#}
+        {#                            <td>#}
+        {#                                <label>测试模块:</label>#}
+        {#                            </td>#}
+        {#                            <td>#}
+        {#                                <input id="test_module" name="test_module" type="text" value="{{ testcase.test_module }}" readonly="readonly"/>#}
+        {#                            </td>#}
+        {#                        </tr>#}
+
+        {#                        <tr>#}
+        {#                            <td>#}
+        {#                                <label>测试页面:</label>#}
+        {#                            </td>#}
+        {#                            <td>#}
+        {#                                <input id="test_page" name="test_page" type="text" value="{{ testcase.test_page }}" readonly="readonly" disabled="disabled" />#}
+        {#                            </td>#}
+        {#                        </tr>#}
+
+        {#                        <tr>#}
+        {#                            <td>#}
+        {#                                <label>功能点:</label>#}
+        {#                            </td>#}
+        {#                            <td>#}
+        {#                                <textarea id="requirement_function" name="requirement_function" readonly="readonly" disabled="disabled" >{{ testcase.requirement_function }}</textarea>#}
+        {#                            </td>#}
+        {#                        </tr>#}
+
+        {#                        <tr>#}
+        {#                            <td>#}
+        {#                                <label>用例优先级:</label>#}
+        {#                            </td>#}
+        {#                            <td>#}
+        {#                                <input type="radio"  name="case_priority"  readonly="readonly" disabled="disabled" value="P0" {% if testcase.case_priority == 'P0' %}checked="checked"{% endif %}>冒烟用例#}
+        {#                                <input type="radio" name="case_priority"  readonly="readonly"  disabled="disabled" value="P1" {% if testcase.case_priority  == 'P1' %}checked="checked"{% endif %}>系统的重要功能用例#}
+        {#                                <input type="radio"  name="case_priority"  readonly="readonly"  disabled="disabled" value="P2" {% if testcase.case_priority == 'P2' %}checked="checked"{% endif %}>系统的一般功能用例#}
+        {#                                <input type="radio" name="case_priority" readonly="readonly"   disabled="disabled" value="P3" {% if testcase.case_priority  == 'P3' %}checked="checked"{% endif %}>极低级别的用例#}
+        {#                            </td>#}
+        {#                        </tr>#}
+
+        {#                        <tr>#}
+        {#                            <td>#}
+        {#                                <label>流程类型:</label>#}
+        {#                            </td>#}
+        {#                            <td>#}
+        {#                                <input type="radio"  name="case_process_type" readonly="readonly" disabled="disabled" value="normal" {% if testcase.case_process_type == 'normal' %}checked="checked"{% endif %}>正常流#}
+        {#                                <input type="radio" name="case_process_type"  readonly="readonly" disabled="disabled" value="unusual" {% if testcase.case_process_type  == 'unusual' %}checked="checked"{% endif %}>异常流#}
+        {#                            </td>#}
+        {#                        </tr>#}
+
+
+                                <tr>
+                                    <td>
+                                        <label>测试用例名称:</label>
+                                    </td>
+                                    <td>
+                                        <input id="case_title" name="case_title" type="text" value="{{ testcase.case_title }}" readonly="readonly" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>测试用例前置条件:</label>
+                                    </td>
+                                    <td>
+                                        <textarea id="case_precondition" name="case_precondition" readonly="readonly">{{ testcase.case_precondition }}</textarea>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>测试用例操作步骤:</label>
+                                    </td>
+                                    <td>
+                                        <textarea id="case_step" name="case_step" readonly="readonly">{{ testcase.case_step  }}</textarea>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>测试用例预期结果:</label>
+                                    </td>
+                                    <td>
+                                        <textarea id="case_expected_result" name="case_expected_result" readonly="readonly">{{ testcase.case_expected_result }}</textarea>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>编写备注:</label>
+                                    </td>
+                                    <td>
+                                        <textarea id="write_comments" name="write_comments" readonly="readonly" >{{ testcase.write_comments }}</textarea>
+                                    </td>
+                                </tr>
+
+                            </table>
+                            {% endblock %}
+
+                        </div>
+
+                        <div class="kongbai"></div>
+                        <div class="box2">
+                    {#        <div class="box2button">#}
+                    {#            <input type="submit" class="button"  value="新增加一条用例"/>#}
+                    {#        </div>#}
+                            <div class="box2a">
+                                <a href='http://ynqbsh.com:8000/yinics/testcase/'>返回测试用例列表页</a>
+                            </div>
+                        </div>
+
+                    {#    {% csrf_token %} <!--保证form表提交，是一种安全机制-->#}
+                    </form>
+
+                {% endblock %}
+            </div>
+            <div id="sider">
+                {% block sider %}
+                    <ul>
+                        {% for sidertestcase in sidertestcases.object_list %}
+                            {% if forloop.counter|divisibleby:"5" %}
+                                <li id="menu_{{ forloop.counter }}" class="menuequal">
+                                    <a href="{% url 'testcase:rela_case' sidertestcase.id %}?page={{ page }}&test_project={{ search_keywords_test_project }}&test_module={{ search_keywords_test_module }}&test_page={{ search_keywords_test_page }}&case_title={{ search_keywords_case_title }}" title="" >第{{ forloop.counter }}条测试用例---【{{ sidertestcase.case_title }}】
+                                    </a>
+                                </li>
+                            {% else %}
+                                 <li id="menu_{{ forloop.counter }}"  >
+                                     <a href="{% url 'test:rela_case' sidertestcase.id %}?page={{ page }}&test_project={{ search_keywords_test_project }}&test_module={{ search_keywords_test_module }}&test_page={{ search_keywords_test_page }}&case_title={{ search_keywords_case_title }}" title="">第{{ forloop.counter }}条测试用例---【{{ sidertestcase.case_title }}】
+                                     </a>
+                                 </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    {% block pageturn %}
+                        <div class="pageturn">
+                             {{ sidertestcases.render }}   <!--调用pure_pagination库自己的分页展示页面-->
+                {#            <ul class="pagelist">#}
+                {#                {% if all_orgs.has_previous %}    <!--如果有前一页,则显示前一页-->#}
+                {#                    <li class="long"><a href="?{{ all_orgs.previous_page_number.querystring }}">上一页</a></li>#}
+                {#                <!--如果没有前一页，就什么都不显示-->#}
+                {#                {% endif %}#}
+                {#                    {% for page in all_orgs.pages %}#}
+                {#                        {% if page %}<!--如果有页数-->#}
+                {#                            {% ifequal page all_orgs.number %}<!--如果是当前页，则显示当前页-->#}
+                {#                                <li class="active"><a href="?{{ page.querystring }}">{{ page }}</a></li>#}
+                {#                            {% else %}<!--如果不是当前页，-->#}
+                {#                                <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>#}
+                {#                            {% endifequal %}#}
+                {#                        {% else %}#}
+                {#                            <li class="none"><a href="">...</a></li><!--自定义的一个点点点页面-->#}
+                {#                        {% endif %}#}
+                {#                    {% endfor %}#}
+                {#                    <!--‘下一页’的显示逻辑-->#}
+                {#                    {% if all_orgs.has_next %}<!--如果有下一页，则显示‘下一页’-->#}
+                {#                        <li class="long"><a href="?{{ all_orgs.next_page_number.querystring }">下一页</a></li>#}
+                {#                    {% endif %}#}
+                {#            </ul>#}
+                        </div>
+                    {% endblock %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+    <!--main_End-->
+
+    <div id="footer">
+        {% block footer %}
+            <p>
+                版权所有：测试用例网
+                <a href="#" title="">
+                    测试用例网
+                </a>
+                未经本站同意 严禁转载
+            </p>
+        {% endblock %}
+    </div>
+    <!--footer_End-->
+{% endblock %}
+</body>
+</html>

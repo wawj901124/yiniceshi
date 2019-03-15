@@ -1,0 +1,170 @@
+*{   /*‘*’为通配符，以此配置全局默认样式*/
+    margin:0;    /*外边距定义为0*/
+    padding:0;   /*内边距定义为0*/
+    color:#00f;   /*文本颜色设置为黑色*/
+    font-size:12px;   /*文字大小设置为12像素*/
+    list-style-type: none;   /*去除列表项预设标记*/
+    text-decoration: none;   /*去除文本装饰，主要去除默认情况下链接文本的下划线*/
+    /*border: peru 1px solid;*/
+}
+
+
+#header{   /*定义id=header层的样式*/
+    width:776px;   /*宽度定义为776像素*/
+    height: 50px;   /*高度定义为110像素*/
+    margin: 10px auto 0px auto;   /*外边距定义：上为0、下为20px、左右为自动*/
+    background: #afd28e;   /*定义背景色辅助编码，方便查看，终会删除*/
+}
+
+#header p{
+    display: block;
+    /*border: yellow 1px solid;*/
+    padding-top: 10px;
+    font-size: 24px;
+    color: #000000;
+    text-align: center;
+    /*background: #d2382c;   !*定义背景色辅助编码，方便查看，终会删除*!*/
+}
+
+#main{   /*定义id=main层的样式*/
+    width: 776px;   /*宽度定义*/
+    margin: 0 auto;   /*外边距定义：上下为0、左右为自动*/
+}
+
+
+#main #container{   /*定义main层id为container的层的样式*/
+    float: right;   /*向右浮动*/
+    width: 554px;   /*宽度定义为556像素*/
+    height:550px;
+    padding-bottom: 10px;   /*下内边距为10px*/
+    background: #ddcc9a;   /*定义辅助背景色*/
+    /*background: #afd28e;*/
+}
+
+#main #container h1{
+    font: 24px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    width: 554px;
+    height:55px;
+    padding: 20px 0px 20px 0px;
+    display: block;
+    margin: -20px 0px 10px 0px;
+    color: #222;
+    text-align: center;   /*文字居中对齐*/
+    /*border: peru 1px solid;*/
+    /*background: #00eeff;   !*定义辅助背景色*!*/
+}
+
+#main #container h1 span{
+    float: left;   /*向左浮动*/
+    padding: 10px 0px 10px 0px ;
+    text-align:left;   /*文字左对齐*/
+    width: 554px;
+    /*border: peru 1px solid;*/
+    /*background: #b92c28;   !*定义辅助背景色*!*/
+}
+
+#main #container h1 span table{
+    float: right;   /*向右浮动*/
+    width: 481px;
+    overflow: scroll; /*溢出时出现滚动条*/
+    /*background: yellow;   !*定义辅助背景色*!*/
+}
+
+#main #container h1 span table a:hover {
+}
+
+#main #container .container-hang{
+    clear: both;
+    width: 556px;
+    height:60px;
+    /*background: navy;   !*定义辅助背景色*!*/
+}
+
+#main #container .container-hang label{
+    display: block;
+    float: left;
+    width:120px;   /*宽度为120像素*/
+    heigth:100px;
+    padding: 0px 0px 0px 0px;   /*内边距定义*/
+    margin: 25px 0px 0px 10px;   /*外边距定义*/
+    color: #00f;
+    /*background: #def;   !*定义辅助背景色*!*/
+}
+
+#main #container .container-hang  input{
+    display: block;
+    float: right;
+    width:390px;  /*宽度为400像素*/
+    margin: 25px 10px 0px 0px;   /*外边距定义*/
+    /*padding: 0px 20px 0px 0px;   !*外边距定义*!*/
+    /*background: darkslategrey;   !*定义辅助背景色*!*/
+}
+#main #container .container-hang  textarea{
+    display: block;
+    float: right;
+    width:390px;  /*宽度为400像素*/
+    height: 60px;
+    margin: 0px 10px 0px 0px;   /*外边距定义*/
+    /*background: darkslategrey;   !*定义辅助背景色*!*/
+}
+
+a:hover{
+    color: darkslategray;   /*定义文本颜色*/
+    text-decoration: underline;    /*定义文本下划线*/
+    /*overflow: visible;  !*溢出可见*!*/
+    /*text-overflow:inherit;   !*溢出继承*!*/
+}
+
+#main #sider{   /*定义main层id为sider的层的样式*/
+    float: left;   /*向左浮动*/
+    width: 218px;   /*宽度定义为220像素*/
+    height:550px;
+    background: #afd28e;   /*定义辅助背景色*/
+}
+
+#main #sider ul{   /*定义main层中sider层中的ul样式*/
+    float: left;   /*向左浮动，为ul设置浮动可以变相地“清除浮动”*/
+    width: 218px;   /*宽度定义为218像素*/
+    margin-top: 17px;   /*上外边距定义为17像素*/
+    /*background: #b92c28;   !*背景色为#fff,背景图片为images/nav_line.gif，横向重复，起始于0，0 点*!*/
+}
+
+
+#main #sider ul li { /*定义main层中sider层中的ul标签中的li标签的样式*/
+    float: left; /*向左浮动*/
+    width: 218px;
+    margin: 7px 1px 0 0; /*外边距定义:上7像素、右1像素、下0、左0*/
+    background: #00eeff;   /*背景色为#fff,背景图片为images/nav_line.gif，横向重复，起始于0，0 点*/
+}
+
+#main #sider ul li.menuequal{   /*定义main层sider层ul标签里li标签里类为menuequal的层的样式*/
+    margin-right: 0;   /*右外边距定义为0，最右侧的列表项“menu_5”有外边距设置为0*/
+    background: #0ef   /*背景辅助色*/
+}
+
+#main #sider ul li a {   /*定义main层sider层ul标签里li标签里a标签的样式*/
+    display: block;   /*定义文字链接为块元素*/
+    height: 26px;   /*高度为26像素*/
+    text-align: left;   /*水平居左对齐*/
+    line-height: 26px;   /*行距为26像素*/
+    color: #069;   /*字体颜色为#069*/
+    background: #e3e3e3;   /*背景色定义为#e3e3e3*/
+    overflow:hidden;   /*溢出隐藏*/
+    text-overflow:ellipsis;   /*溢出显示省略号*/
+    white-space: nowrap;   /*强制不换行*/
+}
+
+#main #sider ul li a:hover { /*定义main层sider层ul标签里li标签里a标签当鼠标悬浮于其上的样式*/
+    font-size:13px;   /*文字大小设置为12像素*/
+    color: #000;   /*文字颜色为#000*/
+    background: #def;   /*背景色为#ccc*/
+    overflow:visible;   /*溢出显示*/
+}
+
+#footer{   /*定义id为footer层的样式*/
+    clear: both;   /*清除双边浮动*/
+    width: 776px;   /*宽度定义*/
+    margin: 0 auto;   /*外边距定义：上下为0、左右为自动*/
+    border-top: 1px solid #06f;   /*定义上边框为1像素实线，颜色为#06f*/
+    background: #afd28e;   /*定义辅助背景色*/
+}
