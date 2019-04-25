@@ -29,7 +29,7 @@ class TestCaseAdmin(object):
     search_fields = ['test_project','test_module','test_page','requirement_function','case_priority',
               'case_process_type', 'case_title','case_precondition', 'case_step', 'case_expected_result',
               'write_comments']
-    list_filter = ['test_project','test_module','test_page','case_priority','case_process_type','write_comments',]   #定义筛选的字段
+    list_filter = ['test_project','test_module','test_page','case_priority','case_process_type','case_title','write_comments',]   #定义筛选的字段
     model_icon = 'fa fa-tasks'  # 定义图标显示
     ordering = ['-write_case_time']  # 添加默认排序规则显示排序，根据添加时间倒序排序
     readonly_fields = ['write_case_time','write_user','test_user']  # 设置某些字段为只为可读  #设置了readonly_fields，再设置exclude，exclude对该字段无效，
