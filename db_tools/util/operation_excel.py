@@ -16,10 +16,14 @@ class OperationExcel:
     def __init__(self,file_name=None,sheet_id=None):
         if file_name:
             self.file_name = file_name
-            self.sheet_id = sheet_id
         else:
             self.file_name = '../data/exceldata/测试用例模板.xls'
+
+        if sheet_id:
+            self.sheet_id = sheet_id
+        else:
             self.sheet_id = 0
+
 
         self.data = self.get_data()   #获取sheet表
 
@@ -27,16 +31,20 @@ class OperationExcel:
     #获取sheet的内容
     def get_data(self):
         data = xlrd.open_workbook(self.file_name)  # 打开excel文件
+        print("打开[%s]文件"% self.file_name)
         tables = data.sheets()[self.sheet_id]    #sheet_id从0开始
+        print("遍历第%s个sheet表" % self.sheet_id)
         return tables
 
     #获取单元格的行数
     def get_lines(self):
         tables = self.data
+        print("获取到单元格的行数为%s"% tables.nrows)
         return tables.nrows
 
     #获取某一个单元格的内容
     def get_cell_value(self,row,col):
+        print("获取【%s】行【%s】列的内容" % (row,col))
         return self.data.cell_value(row,col)
 
     #写入数据
