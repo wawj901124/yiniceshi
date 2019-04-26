@@ -16,12 +16,12 @@ from casereport.models import CaseReport   #导入CaseReport
 class TestCaseAdmin(object):
     ziduan = ['test_project','test_module','test_page','requirement_function','case_priority',
               'case_process_type','rele_case', 'case_title','case_precondition', 'case_step',
-              'case_expected_result','write_comments','write_case_time']
+              'case_expected_result','write_comments','answer_comments','write_case_time']
 
 
     list_display =['id','test_project','test_module','test_page','requirement_function','case_priority',
                    'case_process_type', 'rele_case', 'case_title','case_precondition', 'case_step',
-                   'case_expected_result','write_comments','write_case_time','go_to','go_more'] #定义显示的字段
+                   'case_expected_result','write_comments','answer_comments','write_case_time','go_to','go_more'] #定义显示的字段
 
     # list_display =[ 'test_project','test_module',
     #                 'case_title',
@@ -175,9 +175,10 @@ xadmin.site.register(CopyTestCase, CopyTestCaseAdmin) #在xadmin中注册CopyWri
 class CopyTwoTestCaseAdmin(object):
     ziduan = ['test_project','test_module','test_page','requirement_function','case_priority',
               'case_process_type', 'case_title','case_precondition', 'case_step', 'case_expected_result',
-              'write_comments','write_case_time','ex_result','test_comments']
+              'write_comments','write_case_time','answer_comments','ex_result','test_comments']
 
-    list_display =[ 'case_title','case_precondition', 'case_step', 'case_expected_result','write_comments'
+    list_display =[ 'case_title','case_precondition', 'case_step', 'case_expected_result','write_comments',
+                    'answer_comments'
                     ] #定义显示的字段
 
     # list_display =[ 'test_project','test_module',
