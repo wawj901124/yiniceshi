@@ -11,7 +11,7 @@ class TestCase(models.Model):
     test_page = models.CharField(max_length=50, default="", verbose_name=u"测试页面")
     requirement_function = models.TextField(default="",verbose_name=u"功能点")
     case_priority = models.CharField(max_length=10,null=True, blank=True,
-                                     choices=(("P0", u"冒烟用例"), ("P1", u"系统的重要功能用例") , ("P2", u"系统的一般功能用例"), ("P3", "极低级别的用例")),
+                                     choices=(("P0", u"流程用例"), ("P1", u"系统的重要功能用例") , ("P2", u"系统的一般功能用例"), ("P3", "极低级别的用例")),
                                      default="P1",
                                      verbose_name=u"用例优先级")
     case_process_type = models.CharField(max_length=10,null=True, blank=True,
