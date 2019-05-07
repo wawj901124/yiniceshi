@@ -15,6 +15,11 @@
             <span>
                     {% if errmsg  %}
                         <div class="error-msg">{{ errmsg }}</div>
+{#                        <div class="error-msg">#}
+{#                            {% for key,err in testcaseform.errors.items %}#}
+{#                                {{ key}}{{ err }}#}
+{#                            {% endfor %}#}
+{#                        </div>#}
                     {% else %}
                         <div class="success-msg">{{ sumsg }}</div>
                     {% endif %}

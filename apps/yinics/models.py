@@ -6,7 +6,7 @@ from django.contrib.auth.models import User #导入引用django默认新建user�
 
 # Create your models here.
 class TestCase(models.Model):
-    test_project = models.CharField(max_length=50, default="", verbose_name=u"测试项目")
+    test_project = models.CharField(max_length=50, default="", verbose_name=u"测试项目",help_text=u"测试项目")
     test_module = models.CharField(max_length=50,default="", verbose_name=u"测试模块")
     test_page = models.CharField(max_length=50, default="", verbose_name=u"测试页面")
     requirement_function = models.TextField(default="",verbose_name=u"功能点")
