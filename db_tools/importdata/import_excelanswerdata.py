@@ -38,5 +38,5 @@ class ReadData:
 
 
 if __name__ == "__main__":
-    readdata = ReadData(file_name=r"D:\Users\Administrator\PycharmProjects\yiniceshi\db_tools\data\exceldata\副本编写测试用例-20190428.xls")  #实例化
+    readdata = ReadData(file_name=r"D:\Users\Administrator\PycharmProjects\yiniceshi\db_tools\data\exceldata\编写测试用例-20190430.xls")  #实例化
     readdata.readData()

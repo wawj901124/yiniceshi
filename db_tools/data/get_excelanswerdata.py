@@ -33,7 +33,7 @@ class GetData:
 
 
 if __name__ == '__main__':
-    getdata = GetData(file_name=r'D:\Users\Administrator\PycharmProjects\yiniceshi\db_tools\data\exceldata\编写测试用例-20190425.xls')   #实例化
+    getdata = GetData(file_name=r'D:\Users\Administrator\PycharmProjects\yiniceshi\db_tools\data\exceldata\编写测试用例-20190429.xls')   #实例化
     print('---------------------------')
     rows_count = getdata.get_case_lines()
     for i in range(1, rows_count):  # 循环，但去掉第一个
