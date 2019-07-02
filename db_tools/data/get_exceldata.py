@@ -97,6 +97,12 @@ class GetData:
         write_comments = self.opera_excel.get_cell_value(row, col)   #获取指定单元格的内容
         return write_comments
 
+    # 获取answer_comments
+    def get_answer_comments(self,row):
+        col = int(self.global_var.answer_comments)  #获取answer_comments所在的列数
+        answer_comments = self.opera_excel.get_cell_value(row, col)   #获取指定单元格的内容
+        return answer_comments
+
     # 获取write_user
     def get_write_user(self,row):
         col = int(self.global_var.write_user)  #获取write_user所在的列数

@@ -18,7 +18,7 @@ from db_tools.data.get_exceldata import GetData
 class ReadData:
     def __init__(self,file_name=None,sheet_id=None):
         if file_name==None:
-            self.filename = '../data/exceldata/商户平台v1.5.1.xls'
+            self.filename = '../data/exceldata/编写测试用例.xls'
         else:
             self.filename = file_name
 
@@ -42,9 +42,12 @@ class ReadData:
             testcase.case_expected_result = self.exceldata.get_case_expected_result(i)   #填写用例预期结果
             testcase.write_comments = self.exceldata.get_write_comments(i)   #填写编写用例备注
             testcase.test_comments = self.exceldata.get_test_comments(i)   #填写测试备注
+            testcase.answer_comments = self.exceldata.get_answer_comments(i)  # 填写问题答复
+            if self.exceldata.get_write_user(i) != None:    #如果编写人列有数据则填写编写人
+                testcase.write_user_id = self.exceldata.get_write_user(i)   #填写编写人
             testcase.save()  #保存到数据库
 
 
 if __name__ == "__main__":
-    readdata = ReadData(file_name=r"D:\Users\Administrator\PycharmProjects\yiniceshi\db_tools\data\exceldata\任务活动管理.xls")  #实例化
+    readdata = ReadData(file_name=r"D:\Users\Administrator\PycharmProjects\yiniceshi\db_tools\data\exceldata\编写测试用例.xls")  #实例化
     readdata.readData()

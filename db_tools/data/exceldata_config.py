@@ -18,10 +18,11 @@ class GlobalVar:
     case_step = '10'
     case_expected_result = '11'
     write_comments = '12'
-    write_user = '13'
-    write_case_time = '14'
-    ex_result = '15'
-    test_comments = '16'
-    test_user = '17'
+    answer_comments = '13'
+    write_user = '14'
+    write_case_time = '15'
+    ex_result = '18'
+    test_comments = '19'
+    test_user = '20'
 
 
