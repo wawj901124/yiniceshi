@@ -21,7 +21,8 @@ class TestCaseAdmin(object):
 
     list_display =['id','test_project','test_module','test_page','requirement_function','case_priority',
                    'case_process_type', 'rele_case', 'case_title','case_precondition', 'case_step',
-                   'case_expected_result','write_comments','answer_comments','write_case_time','go_to','go_more'] #定义显示的字段
+                   'case_expected_result','write_comments','answer_comments','write_user','write_case_time',
+                   'go_to','go_more'] #定义显示的字段
 
     # list_display =[ 'test_project','test_module',
     #                 'case_title',
