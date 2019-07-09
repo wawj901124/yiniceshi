@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'pure_pagination',   #注册分页库
     'casereport.apps.CasereportConfig',   #注册casereport
     'checkcasecatelogue.apps.CheckcasecatelogueConfig',#注册checkcasecatelogue
+    'projress.apps.ProjressConfig',   #注册projress
 ]
 
 MIDDLEWARE = [
