@@ -13,7 +13,7 @@ class CaseReportAdmin(object):
 
     list_display =['id','test_project','test_module','goto_case_model_total_nums',
                    'goto_case_model_pass_nums','goto_case_model_fail_nums','goto_case_model_block_nums',
-                   'goto_case_model_na_nums','count_model_pass_lv','and_all_projectandmodule_name'] #定义显示的字段
+                   'goto_case_model_na_nums','count_model_pass_lv',] #定义显示的字段
 
     # list_display =[ 'test_project','test_module',
     #                 'case_title',
@@ -77,7 +77,7 @@ class CaseReportTwoAdmin(object):
     ziduan = ['test_project','test_module','is_repeat','add_time']
 
 
-    list_display =['test_project','set_is_repeat','goto_model_nums','goto_case_project_total_nums',
+    list_display =['test_project','is_repeat','goto_model_nums','goto_case_project_total_nums',
                    'goto_case_project_pass_nums','goto_case_project_fail_nums','goto_case_project_block_nums',
                    'goto_case_project_na_nums','count_project_pass_lv',] #定义显示的字段
 

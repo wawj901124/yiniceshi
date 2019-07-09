@@ -11,8 +11,7 @@ class CaseCatelogueAdmin(object):
     ziduan = ['test_project','test_module','test_page','is_repeat','is_repeat_model','add_time']
 
 
-    list_display =['id','test_project','test_module','test_page','goto_case_page_total_nums',
-                   'and_all_projectandmoduleandpage_name'] #定义显示的字段
+    list_display =['id','test_project','test_module','test_page','goto_case_page_total_nums'] #定义显示的字段
 
     # list_display =[ 'test_project','test_module',
     #                 'case_title',
@@ -76,7 +75,7 @@ class CaseCatelogueCopyTwoAdmin(object):
     ziduan = ['test_project', 'test_module', 'test_page', 'is_repeat', 'is_repeat_model', 'add_time']
 
 
-    list_display =['test_project','test_module','set_is_repeat_model','goto_page_total_nums','goto_case_model_total_nums'] #定义显示的字段
+    list_display =['test_project','test_module','is_repeat_model','goto_page_total_nums','goto_case_model_total_nums'] #定义显示的字段
 
     # list_display =[ 'test_project','test_module',
     #                 'case_title',
@@ -144,7 +143,7 @@ class CaseCatelogueCopyThreeAdmin(object):
     ziduan = ['test_project', 'test_module', 'test_page', 'is_repeat', 'is_repeat_model', 'add_time']
 
 
-    list_display =['test_project','set_is_repeat','goto_model_total_nums','goto_case_project_total_nums'] #定义显示的字段
+    list_display =['test_project','is_repeat','goto_model_total_nums','goto_case_project_total_nums'] #定义显示的字段
 
     # list_display =[ 'test_project','test_module',
     #                 'case_title',
