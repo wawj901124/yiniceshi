@@ -9,6 +9,7 @@ from django.db.models import Q   #导入Q，筛选作为或与用
 from .models import TestCase   #导入TestCase
 from .forms import TestCaseForm   #导入QSTestCaseForm
 from casereport.models import CaseReport   #导入CaseReport
+from checkcasecatelogue.models import CaseCatelogue   #导入CaseCatelogue
 
 
 
@@ -57,6 +58,29 @@ class  TestCaseView(View):  #继承View
                 newcasereport.test_project = zj.test_project
                 newcasereport.test_module = zj.test_module
                 newcasereport.save()
+
+            # 判断新加的用例的项目名称和模块名称和页面名称是否是新的，是新的就在CaseCatelogue模块中新加，不是就不加
+            casecatelogues_projectandmoduleandpage_name_list = []
+            casecatelogues_projectandmodule_name_list = []
+            casecatelogues_project_name_list = []
+            casecatelogues = CaseCatelogue.objects.all()  # 获取CaseCatelogue所用内容
+            for casecatelogue in casecatelogues:
+                casecatelogues_project_name_list.append(casecatelogue.test_project)
+                casecatelogues_projectandmodule_name_list.append(
+                    "%s@#*pap%s" % (casecatelogue.test_project, casecatelogue.test_module))
+                casecatelogues_projectandmoduleandpage_name_list.append("%s@#*pap%s@#*pap%s" % (
+                casecatelogue.test_project, casecatelogue.test_module, casecatelogue.test_project))
+            newaddtestcase_addpage = "%s@#*pap%s@#*pap%s" % (zj.test_project, zj.test_module, zj.test_page)
+            if newaddtestcase_addpage not in casecatelogues_projectandmoduleandpage_name_list:
+                newcasecatelogue = CaseCatelogue()
+                newcasecatelogue.test_project = zj.test_project
+                newcasecatelogue.test_module = zj.test_module
+                newcasecatelogue.test_page = zj.test_page
+                if newaddtestcase not in casecatelogues_projectandmodule_name_list:
+                    newcasecatelogue.is_repeat_model = False
+                if zj.test_project not in casecatelogues_project_name_list:
+                    newcasecatelogue.is_repeat = False
+                newcasecatelogue.save()
 
             tesecaseid = zj.id
             # qstesecase_id = int(qstesecase_id) +1

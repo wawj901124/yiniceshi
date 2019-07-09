@@ -11,6 +11,7 @@ from xadmin import views   #导入xadmin中的views,用于和 BaseSettings类绑
 
 from .models import TestCase,CopyTestCase,CopyTwoTestCase #导入模型
 from casereport.models import CaseReport   #导入CaseReport
+from checkcasecatelogue.models import CaseCatelogue   #导入CaseCatelogue
 
 
 class TestCaseAdmin(object):
@@ -59,8 +60,10 @@ class TestCaseAdmin(object):
             obj.save()   #保存当前用例
 
         casereports_projectandmodule_name_list = []
+        casereports_project_name_list = []
         casereports = CaseReport.objects.all()  # 获取CaseReport所用内容
         for casereport in casereports:
+            casereports_project_name_list.append(casereport.test_project)
             casereports_projectandmodule_name_list.append("%s@#*pap%s"%(casereport.test_project,casereport.test_module))
 
         newaddtestcase = "%s@#*pap%s"%(obj.test_project,obj.test_module)
@@ -69,7 +72,32 @@ class TestCaseAdmin(object):
             newcasereport = CaseReport()
             newcasereport.test_project = obj.test_project
             newcasereport.test_module =obj.test_module
+            if obj.test_project not in casereports_project_name_list:
+                newcasereport.is_repeat = False
             newcasereport.save()
+
+        casecatelogues_projectandmoduleandpage_name_list = []
+        casecatelogues_projectandmodule_name_list = []
+        casecatelogues_project_name_list = []
+        casecatelogues = CaseCatelogue.objects.all() # 获取CaseCatelogue所用内容
+        for casecatelogue in casecatelogues:
+            casecatelogues_project_name_list.append(casecatelogue.test_project)
+            casecatelogues_projectandmodule_name_list.append("%s@#*pap%s"% (casecatelogue.test_project,casecatelogue.test_module))
+            casecatelogues_projectandmoduleandpage_name_list.append("%s@#*pap%s@#*pap%s"% (casecatelogue.test_project,casecatelogue.test_module,casecatelogue.test_project))
+        newaddtestcase_addpage = "%s@#*pap%s@#*pap%s"% (obj.test_project,obj.test_module,obj.test_page)
+        if newaddtestcase_addpage not in casecatelogues_projectandmoduleandpage_name_list:
+            newcasecatelogue = CaseCatelogue()
+            newcasecatelogue.test_project = obj.test_project
+            newcasecatelogue.test_module = obj.test_module
+            newcasecatelogue.test_page = obj.test_page
+            if newaddtestcase not in casecatelogues_projectandmodule_name_list:
+                newcasecatelogue.is_repeat_model = False
+            if obj.test_project not in casecatelogues_project_name_list:
+                newcasecatelogue.is_repeat = False
+            newcasecatelogue.save()
+
+
+
 
     def queryset(self):   #重载queryset方法，用来做到不同的admin取出的数据不同
         qs = super(TestCaseAdmin, self).queryset()   #调用父类
