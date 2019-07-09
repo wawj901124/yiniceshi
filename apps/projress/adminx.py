@@ -18,14 +18,7 @@ class ProjectProgressAdmin(object):
               ]
 
 
-    list_display =['id','project_name','project_status', 'project_leader',
-              'project_start_time','project_end_time','project_user_time',
-              'product_leader', 'product_staff', 'requirement_status',
-              'requirement_start_time', 'requirement_end_time','requirement_user_time',
-              'develop_leader', 'develop_staff','develop_status',
-              'develop_start_time','develop_end_time', 'develop_user_time',
-              'test_leader', 'test_staff','test_status',
-              'test_start_time', 'test_end_time', 'test_user_time',
+    list_display =['id','project_name','project_status',
               'add_time','update_time'] #定义显示的字段
 
     # list_display =[ 'test_project','test_module',
