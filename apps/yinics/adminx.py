@@ -137,6 +137,7 @@ class TestCaseAdmin(object):
                     testcase.test_comments = all_list_1[i][19]  # 填写测试备注
                     testcase.save()  # 保存到数据库
 
+                    #处理CaseReport相关内容
                     casereports_projectandmodule_name_list = []
                     casereports_project_name_list = []
                     casereports = CaseReport.objects.all()  # 获取CaseReport所用内容
@@ -155,6 +156,7 @@ class TestCaseAdmin(object):
                             newcasereport.is_repeat = False
                         newcasereport.save()
 
+                    # 处理CaseCatelogue相关内容
                     casecatelogues_projectandmoduleandpage_name_list = []
                     casecatelogues_projectandmodule_name_list = []
                     casecatelogues_project_name_list = []
@@ -176,7 +178,7 @@ class TestCaseAdmin(object):
                         if all_list_1[i][1] not in casecatelogues_project_name_list:
                             newcasecatelogue.is_repeat = False
                         newcasecatelogue.save()
-                    
+
                     i = i+1
             pass
         return super(TestCaseAdmin,self).post(request,args,kwargs)   #必须调用TestCaseAdmin父类，再调用post方法，否则会报错
