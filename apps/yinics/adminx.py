@@ -14,6 +14,7 @@ from casereport.models import CaseReport   #导入CaseReport
 from checkcasecatelogue.models import CaseCatelogue   #导入CaseCatelogue
 
 
+
 class TestCaseAdmin(object):
     ziduan = ['test_project','test_module','test_page','requirement_function','case_priority',
               'case_process_type','rele_case', 'case_title','case_precondition', 'case_step',
@@ -44,6 +45,9 @@ class TestCaseAdmin(object):
     list_display_links = ['test_project','case_title',]   #设置点击链接进入编辑页面的字段
     # date_hierarchy = 'add_time'   #详细时间分层筛选，未生效
     show_detail_fields = ['test_project','case_title',]   #显示数据详情
+
+    #设置是否加入导入插件
+    import_excel = True   #True表示显示使用插件，False表示不显示使用插件，该import_excel变量会覆盖插件中的变量
 
     #设置空值显示
     # empty_value_display = "无相关内容"  #没用，不生效
@@ -95,6 +99,47 @@ class TestCaseAdmin(object):
             if obj.test_project not in casecatelogues_project_name_list:
                 newcasecatelogue.is_repeat = False
             newcasecatelogue.save()
+
+    def post(self,request, *args,**kwargs):   #重载post函数，用于判断导入的逻辑
+        if 'excel' in request.FILES:  #如果excel在request.FILES中
+            excel_file = request.FILES.get('excel', '')
+
+
+            import xlrd   #导入xlrd
+            #常用的Excel文件有.xls和.xls两种，.xls文件读取时需要设置formatting_info = True
+            # data = xlrd.open_workbook(filename=None, file_contents=excel_file.read())  # xlsx文件
+
+            exceldata = xlrd.open_workbook(filename=None, file_contents=excel_file.read(), formatting_info=True)  # xls文件
+
+            from .analyzexls import Analyzexls
+            analyzexls = Analyzexls()
+            #将获取的数据循环导入数据库中
+            all_list_1 = analyzexls.get_sheets_mg(exceldata, 0)
+            i = 0
+            if len(all_list_1[0]) == 21:
+                while i < len(all_list_1):
+                    testcase = TestCase()  # 数据库的对象等于TestCase,实例化
+                    testcase.test_project = all_list_1[i][1]  # 填写项目all_list_1[i][j]
+                    testcase.test_module = all_list_1[i][2]  # 填写模块
+                    testcase.test_page = all_list_1[i][3]  # 填写测试页
+                    testcase.requirement_function = all_list_1[i][4]  # 填写功能点
+                    testcase.case_title = all_list_1[i][8] # 填写用例名称
+                    testcase.case_precondition = all_list_1[i][9]  # 填写用例前提
+                    testcase.case_step = all_list_1[i][10]  # 填写用例步骤
+                    testcase.case_expected_result = all_list_1[i][11]  # 填写用例预期结果
+                    testcase.write_comments = all_list_1[i][12]  # 填写编写用例备注
+                    testcase.answer_comments = all_list_1[i][13]  # 填写问题答复
+                    if all_list_1[i][14] != None:  # 如果编写人列有数据则填写编写人
+                        users = User.objects.all()
+                        for user in users:
+                            if user.username == all_list_1[i][14]:
+                                testcase.write_user_id = user.id   # 填写编写人
+                    testcase.test_comments = all_list_1[i][19]  # 填写测试备注
+                    testcase.save()  # 保存到数据库
+                    i = i+1
+            pass
+        return super(TestCaseAdmin,self).post(request,args,kwargs)   #必须调用TestCaseAdmin父类，再调用post方法，否则会报错
+                                                                      #一定不要忘记，否则整个TestCaseAdmin保存都会出错
 
 
 

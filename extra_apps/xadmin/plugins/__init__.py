@@ -28,7 +28,12 @@ PLUGINS = (
     'language',
     'quickfilter',
     'sortablelist',
-    'importexport'
+    'importexport',
+    'excel',   #添加导入excel（1.在plugins中新加excel.py文件，
+                # 2.在templates/xadmin中添加excel文件夹，在excel文件夹下添加model_list.top_toolbar.import.html模板,
+                #3.在要配置的adminx文件中，把import_excel = True加入，即可配置,
+                #4.在在要配置的adminx文件中，重写（重载）post函数
+                #5.在plugins中的__init__文件中加入excel（excel为excel.py的文件名） ）
 )
 
 

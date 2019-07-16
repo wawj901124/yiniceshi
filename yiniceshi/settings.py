@@ -110,25 +110,25 @@ WSGI_APPLICATION = 'yiniceshi.wsgi.application'
 #     }
 # }
 
-DATABASES = {   #配置数据库为mysql
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': "yntestcase",
-        'USER':"root",
-        'PASSWORD':"root",
-        'HOST':"localhost"
-    }
-}
-
 # DATABASES = {   #配置数据库为mysql
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': "casereport",
+#         'NAME': "yntestcase",
 #         'USER':"root",
 #         'PASSWORD':"root",
 #         'HOST':"localhost"
 #     }
 # }
+
+DATABASES = {   #配置数据库为mysql
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': "testimport",
+        'USER':"root",
+        'PASSWORD':"root",
+        'HOST':"localhost"
+    }
+}
 
 # DATABASES = {   #配置数据库为mysql
 #     'default': {
