@@ -46,8 +46,10 @@ class  TestCaseView(View):  #继承View
 
             #判断新加的用例的项目名称和模块名称是否是新的，是新的就在CaseReport模块中新加，不是就不加
             casereports_projectandmodule_name_list = []
+            casereports_project_name_list = []
             casereports = CaseReport.objects.all()  # 获取CaseReport所用内容
             for casereport in casereports:
+                casereports_project_name_list.append(casereport.test_project)
                 casereports_projectandmodule_name_list.append(
                     "%s@#*pap%s" % (casereport.test_project, casereport.test_module))
 
@@ -57,6 +59,8 @@ class  TestCaseView(View):  #继承View
                 newcasereport = CaseReport()
                 newcasereport.test_project = zj.test_project
                 newcasereport.test_module = zj.test_module
+                if zj.test_project not in casereports_project_name_list:
+                    newcasereport.is_repeat = False
                 newcasereport.save()
 
             # 判断新加的用例的项目名称和模块名称和页面名称是否是新的，是新的就在CaseCatelogue模块中新加，不是就不加

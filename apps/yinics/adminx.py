@@ -136,6 +136,47 @@ class TestCaseAdmin(object):
                                 testcase.write_user_id = user.id   # 填写编写人
                     testcase.test_comments = all_list_1[i][19]  # 填写测试备注
                     testcase.save()  # 保存到数据库
+
+                    casereports_projectandmodule_name_list = []
+                    casereports_project_name_list = []
+                    casereports = CaseReport.objects.all()  # 获取CaseReport所用内容
+                    for casereport in casereports:
+                        casereports_project_name_list.append(casereport.test_project)
+                        casereports_projectandmodule_name_list.append(
+                            "%s@#*pap%s" % (casereport.test_project, casereport.test_module))
+
+                    newaddtestcase = "%s@#*pap%s" % (all_list_1[i][1], all_list_1[i][2])
+
+                    if newaddtestcase not in casereports_projectandmodule_name_list:
+                        newcasereport = CaseReport()
+                        newcasereport.test_project = all_list_1[i][1]
+                        newcasereport.test_module = all_list_1[i][2]
+                        if all_list_1[i][1] not in casereports_project_name_list:
+                            newcasereport.is_repeat = False
+                        newcasereport.save()
+
+                    casecatelogues_projectandmoduleandpage_name_list = []
+                    casecatelogues_projectandmodule_name_list = []
+                    casecatelogues_project_name_list = []
+                    casecatelogues = CaseCatelogue.objects.all()  # 获取CaseCatelogue所用内容
+                    for casecatelogue in casecatelogues:
+                        casecatelogues_project_name_list.append(casecatelogue.test_project)
+                        casecatelogues_projectandmodule_name_list.append(
+                            "%s@#*pap%s" % (casecatelogue.test_project, casecatelogue.test_module))
+                        casecatelogues_projectandmoduleandpage_name_list.append("%s@#*pap%s@#*pap%s" % (
+                        casecatelogue.test_project, casecatelogue.test_module, casecatelogue.test_project))
+                    newaddtestcase_addpage = "%s@#*pap%s@#*pap%s" % (all_list_1[i][1], all_list_1[i][2], all_list_1[i][3])
+                    if newaddtestcase_addpage not in casecatelogues_projectandmoduleandpage_name_list:
+                        newcasecatelogue = CaseCatelogue()
+                        newcasecatelogue.test_project = all_list_1[i][1]
+                        newcasecatelogue.test_module = all_list_1[i][2]
+                        newcasecatelogue.test_page = all_list_1[i][3]
+                        if newaddtestcase not in casecatelogues_projectandmodule_name_list:
+                            newcasecatelogue.is_repeat_model = False
+                        if all_list_1[i][1] not in casecatelogues_project_name_list:
+                            newcasecatelogue.is_repeat = False
+                        newcasecatelogue.save()
+                    
                     i = i+1
             pass
         return super(TestCaseAdmin,self).post(request,args,kwargs)   #必须调用TestCaseAdmin父类，再调用post方法，否则会报错
