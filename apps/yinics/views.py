@@ -73,7 +73,7 @@ class  TestCaseView(View):  #继承View
                 casecatelogues_projectandmodule_name_list.append(
                     "%s@#*pap%s" % (casecatelogue.test_project, casecatelogue.test_module))
                 casecatelogues_projectandmoduleandpage_name_list.append("%s@#*pap%s@#*pap%s" % (
-                casecatelogue.test_project, casecatelogue.test_module, casecatelogue.test_project))
+                casecatelogue.test_project, casecatelogue.test_module, casecatelogue.test_page))
             newaddtestcase_addpage = "%s@#*pap%s@#*pap%s" % (zj.test_project, zj.test_module, zj.test_page)
             if newaddtestcase_addpage not in casecatelogues_projectandmoduleandpage_name_list:
                 newcasecatelogue = CaseCatelogue()

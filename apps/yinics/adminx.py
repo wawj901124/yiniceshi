@@ -87,7 +87,7 @@ class TestCaseAdmin(object):
         for casecatelogue in casecatelogues:
             casecatelogues_project_name_list.append(casecatelogue.test_project)
             casecatelogues_projectandmodule_name_list.append("%s@#*pap%s"% (casecatelogue.test_project,casecatelogue.test_module))
-            casecatelogues_projectandmoduleandpage_name_list.append("%s@#*pap%s@#*pap%s"% (casecatelogue.test_project,casecatelogue.test_module,casecatelogue.test_project))
+            casecatelogues_projectandmoduleandpage_name_list.append("%s@#*pap%s@#*pap%s"% (casecatelogue.test_project,casecatelogue.test_module,casecatelogue.test_page))
         newaddtestcase_addpage = "%s@#*pap%s@#*pap%s"% (obj.test_project,obj.test_module,obj.test_page)
         if newaddtestcase_addpage not in casecatelogues_projectandmoduleandpage_name_list:
             newcasecatelogue = CaseCatelogue()
@@ -141,12 +141,15 @@ class TestCaseAdmin(object):
                     casereports_projectandmodule_name_list = []
                     casereports_project_name_list = []
                     casereports = CaseReport.objects.all()  # 获取CaseReport所用内容
+                    print("casereports.count():%s"% casereports.count())
                     for casereport in casereports:
                         casereports_project_name_list.append(casereport.test_project)
                         casereports_projectandmodule_name_list.append(
                             "%s@#*pap%s" % (casereport.test_project, casereport.test_module))
 
                     newaddtestcase = "%s@#*pap%s" % (all_list_1[i][1], all_list_1[i][2])
+                    print("casereports_projectandmodule_name_list：%s" % casereports_projectandmodule_name_list )
+                    print("casereports_project_name_list:%s" % casereports_project_name_list)
 
                     if newaddtestcase not in casereports_projectandmodule_name_list:
                         newcasereport = CaseReport()
@@ -161,13 +164,17 @@ class TestCaseAdmin(object):
                     casecatelogues_projectandmodule_name_list = []
                     casecatelogues_project_name_list = []
                     casecatelogues = CaseCatelogue.objects.all()  # 获取CaseCatelogue所用内容
+                    print("casecatelogues.count():%s" % casecatelogues.count())
                     for casecatelogue in casecatelogues:
                         casecatelogues_project_name_list.append(casecatelogue.test_project)
-                        casecatelogues_projectandmodule_name_list.append(
-                            "%s@#*pap%s" % (casecatelogue.test_project, casecatelogue.test_module))
-                        casecatelogues_projectandmoduleandpage_name_list.append("%s@#*pap%s@#*pap%s" % (
-                        casecatelogue.test_project, casecatelogue.test_module, casecatelogue.test_project))
-                    newaddtestcase_addpage = "%s@#*pap%s@#*pap%s" % (all_list_1[i][1], all_list_1[i][2], all_list_1[i][3])
+                        casecatelogues_projectandmodule_name_list.append("%s@#*pap%s" % (casecatelogue.test_project, casecatelogue.test_module))
+                        casecatelogues_projectandmoduleandpage_name_list.append("%s@#*pap%s@#*pap%s" % (casecatelogue.test_project, casecatelogue.test_module, casecatelogue.test_page))
+                    newaddtestcase_addpage = "%s@#*pap%s@#*pap%s" % (all_list_1[i][1],all_list_1[i][2],all_list_1[i][3])
+                    print("casecatelogues_projectandmoduleandpage_name_list:%s" % casecatelogues_projectandmoduleandpage_name_list)
+                    print("casecatelogues_projectandmodule_name_list:%s" %  casecatelogues_projectandmodule_name_list)
+                    print("casecatelogues_project_name_list:%s" % casecatelogues_project_name_list)
+                    print("newaddtestcase_addpage:%s" % newaddtestcase_addpage)
+                    print("newaddtestcase:%s" % newaddtestcase)
                     if newaddtestcase_addpage not in casecatelogues_projectandmoduleandpage_name_list:
                         newcasecatelogue = CaseCatelogue()
                         newcasecatelogue.test_project = all_list_1[i][1]
