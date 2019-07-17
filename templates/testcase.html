@@ -129,7 +129,7 @@
                         <label>编写备注:</label>
                     </td>
                     <td>
-                        <textarea id="write_comments" name="write_comments">{% autoescape off %}{{ testcase.write_comments }}{% endautoescape %}</textarea> <!--autoescape off 将自动转义关闭,默认是开启的-->
+                        <textarea id="write_comments" name="write_comments">{% autoescape off %}{{ testcase.write_comments|safe }}{% endautoescape %}</textarea> <!--autoescape off 将自动转义关闭,默认是开启的-->
 {#                        <div>{% autoescape off %}{{ testcase.write_comments }}{% endautoescape %}</div> <!--autoescape off 将自动转义关闭,默认是开启的-->#}
                     </td>
                 </tr>
