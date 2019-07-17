@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'casereport.apps.CasereportConfig',   #注册casereport
     'checkcasecatelogue.apps.CheckcasecatelogueConfig',#注册checkcasecatelogue
     'projress.apps.ProjressConfig',   #注册projress
+    'DjangoUeditor',   #注册DjangoUeditor   github网址：https://github.com/zhangfisher/DjangoUeditor   富文本使用-1
 ]
 
 MIDDLEWARE = [

@@ -3,6 +3,8 @@ from datetime import datetime   #导入获取时间包
 from django.db import models   #导入django的models
 from django.contrib.auth.models import User #导入引用django默认新建user表的类User
 
+from DjangoUeditor.models import UEditorField   #富文本使用-3
+
 
 # Create your models here.
 class TestCase(models.Model):
@@ -24,7 +26,10 @@ class TestCase(models.Model):
     case_precondition = models.TextField(default="",null=True, blank=True,verbose_name=u"测试用例_前置条件")
     case_step  = models.TextField(default="",verbose_name=u"测试用例_操作步骤")
     case_expected_result = models.TextField(default="", verbose_name=u"测试用例_预期结果")
-    write_comments = models.TextField(default=u"编写备注", null=True, blank=True,verbose_name=u"编写备注")
+    # write_comments = models.TextField(default=u"编写备注", null=True, blank=True,verbose_name=u"编写备注")
+    write_comments = UEditorField(verbose_name=u'编写备注',width=600, height=300, toolbars="full", imagePath="testcase/ueditor/images/%(basename)s_%(datetime)s.%(extname)s",
+                                  filePath="testcase/ueditor/files/%(basename)s_%(datetime)s.%(extname)s", upload_settings={"imageMaxSize":1204000},
+                                  settings={},command=None,null=True,blank=True)   #富文本使用-4
     answer_comments = models.TextField(default=u"问题答复", null=True, blank=True, verbose_name=u"问题答复")
     write_user = models.ForeignKey(User,related_name="writeuser",null=True, blank=True, verbose_name=u"编写人员", on_delete=models.PROTECT)
     # wirte_user = models.CharField(max_length=50, null=True, blank=True, default="",verbose_name=u"编写人员")

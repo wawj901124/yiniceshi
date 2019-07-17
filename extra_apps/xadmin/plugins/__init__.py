@@ -34,6 +34,8 @@ PLUGINS = (
                 #3.在要配置的adminx文件中，把import_excel = True加入，即可配置,
                 #4.在在要配置的adminx文件中，重写（重载）post函数
                 #5.在plugins中的__init__文件中加入excel（excel为excel.py的文件名） ）
+                #Xadmin插件规则：https://xadmin.readthedocs.io/en/docs-chinese/make_plugin.html
+    'ueditor',   #注册ueditor插件
 )
 
 

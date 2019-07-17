@@ -24,4 +24,7 @@ urlpatterns = [
     # yinics应用url配置
     path('testcase/', include('yinics.urls', namespace='testcase')),  # 配置测试用例url,namespace指明命名空间，用命名空间做限定
     # path('casereport/', include('casereport.urls', namespace='case_report')),  # 配置测试用例url,namespace指明命名空间，用命名空间做限定
+    # url(r'^ueditor/',include('DjangoUeditor.urls' ))
+
+    path('ueditor/',include( 'DjangoUeditor.urls' )), #配置富文本相关url  富文本使用-2
 ]

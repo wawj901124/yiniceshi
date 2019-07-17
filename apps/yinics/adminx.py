@@ -52,6 +52,9 @@ class TestCaseAdmin(object):
     #设置空值显示
     # empty_value_display = "无相关内容"  #没用，不生效
 
+    #设置富文本使用  富文本使用-6
+    style_fields = {"write_comments":"ueditor"}   #设置write_comments字段使用富文本ueditor
+
 
     def save_models(self):   #重载save_models的方法，可以在做了某个动作后，动态重新加载
         #在保存用例的时候统计新加用例项目名字是否新加，模块名字是否新加，以及新加数，以及在用户报告模块中自动新加内容
