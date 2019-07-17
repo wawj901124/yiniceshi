@@ -74,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',   #导入media上下文的处理器，为了使配置的{{MEDIA_URL}}生效   #media配置使用-1
             ],
         },
     },
@@ -199,6 +200,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]   #将static加入python跟搜索路径
 
+MEDIA_URL = '/media/'   #配置上传文件跟目录   media配置使用-2
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')    #MEDIA_ROOT只能设置一个，根目录,把media与根目录BASE_DIR连接起来   media配置使用-2
 
 #网站域名及端口配置
 YMDK = 'http://ynqbsh.com:8000'

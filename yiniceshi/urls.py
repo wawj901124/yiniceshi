@@ -18,6 +18,8 @@ from django.urls import path
 from django.urls import include
 
 import xadmin
+from django.views.static import serve   #导入django处理静态文件的包serve ,用于处理midia路径下的文件   media配置使用-3
+from .settings import MEDIA_ROOT    #导入Settings中配置的MEDIA_ROOT   media配置使用-3
 
 urlpatterns = [
     path('', xadmin.site.urls),
@@ -27,4 +29,8 @@ urlpatterns = [
     # url(r'^ueditor/',include('DjangoUeditor.urls' ))
 
     path('ueditor/',include( 'DjangoUeditor.urls' )), #配置富文本相关url  富文本使用-2
+
+    # 配置上传文件的访问处理函数
+    path('media/<path:path>', serve, {"document_root": MEDIA_ROOT}),   #media配置使用-3
+    # 配置处理引用midia路径下文件的路径,调用serve方法,需要传入参数{"document_root":MEDIA_ROOT}
 ]
