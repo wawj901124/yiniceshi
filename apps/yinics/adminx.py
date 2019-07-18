@@ -48,6 +48,12 @@ class TestCaseAdmin(object):
     list_export = ('xls',)  #控制列表页导出数据的可选格式
     show_bookmarks = True   #控制是否显示书签功能
     # data_charts = ""    #控制显示图标的样式
+    # data_charts = {   #使用网址：https://xadmin.readthedocs.io/en/latest/_modules/xadmin/plugins/chart.html
+    #                   # 插件介绍网址：http://www.mamicode.com/info-detail-2403646.html
+    #     "user_count": {'title': u"User Report", "x-field": "test_project", "y-field": ('case_title',),
+    #                    "order": ('test_project',)},
+    #     "avg_count": {'title': u"Avg Report", "x-field": "date", "y-field": ('avg_count',), "order": ('date',)}
+    # }
 
     #设置是否加入导入插件
     import_excel = True   #True表示显示使用插件，False表示不显示使用插件，该import_excel变量会覆盖插件中的变量
