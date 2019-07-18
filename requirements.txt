@@ -7,6 +7,7 @@ django-formtools==2.1
 django-import-export==1.0.0
 django-pure-pagination==0.3.0
 django-reversion==2.0.13
+DjangoUeditor==1.8.143
 et-xmlfile==1.0.1
 future==0.16.0
 httplib2==0.9.2
