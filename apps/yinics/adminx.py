@@ -50,6 +50,7 @@ class TestCaseAdmin(object):
     # data_charts = ""    #控制显示图标的样式
     # data_charts = {   #使用网址：https://xadmin.readthedocs.io/en/latest/_modules/xadmin/plugins/chart.html
     #                   # 插件介绍网址：http://www.mamicode.com/info-detail-2403646.html
+    #                   #使用网址：https://www.jianshu.com/p/6201e1e9133c
     #     "user_count": {'title': u"User Report", "x-field": "test_project", "y-field": ('case_title',),
     #                    "order": ('test_project',)},
     #     "avg_count": {'title': u"Avg Report", "x-field": "date", "y-field": ('avg_count',), "order": ('date',)}
