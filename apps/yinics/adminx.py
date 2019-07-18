@@ -107,7 +107,6 @@ class TestCaseAdmin(object):
         if 'excel' in request.FILES:  #如果excel在request.FILES中
             excel_file = request.FILES.get('excel', '')
 
-
             import xlrd   #导入xlrd
             #常用的Excel文件有.xls和.xls两种，.xls文件读取时需要设置formatting_info = True
             # data = xlrd.open_workbook(filename=None, file_contents=excel_file.read())  # xlsx文件

@@ -11,6 +11,7 @@
 //检测上传文件的类型
             var imgName = document.all.submit_upload.value;
             var ext,idx;
+
             if (imgName == ''){
                 document.all.submit_upload_b.disabled=true;
                 alert("请选择需要上传的 xls 文件!");
@@ -21,19 +22,21 @@
                     ext = imgName.substr(idx+1).toUpperCase();
                     ext = ext.toLowerCase( );
 {#                    alert("ext="+ext);#}
-                    if (ext != 'xls' && ext != 'xlsx'){
-                        document.all.submit_upload_b.disabled=true;
-                        alert("只能上传 .xls 类型的文件!");
 
+                    if (ext != 'xls') {   {# 将文件名后缀xls或xlsx改为只有xls #}
+                        {#if (ext != 'xls' && ext != 'xlsx'){#}
+                        alert("只能上传 .xls 类型的文件!");
+                        document.all.submit_upload.value = null;{# 将上传文件内容清空 #}
+                        document.all.submit_upload_b.disabled = false;  {# 将导入按钮置为可用状态 #}
                         return;
                     }
+
                 } else {
                     document.all.submit_upload_b.disabled=true;
-                    alert("只能上传 .xls 类型的文件!");
+                    alert("只能上传 .xls 类型的文件!(else)");
                     return;
                 }
             }
-
         }
     </script>
     <div id="export-modal-import-excel" class="modal fade">
@@ -46,12 +49,12 @@
             <h4 class="modal-title">导入 Excel</h4>
           </div>
           <div class="modal-body">
-               <input type="file" onchange="fileChange(this)" name="excel" id="submit_upload">
+               <input type="file" onchange="fileChange(this)" name="excel" id="submit_upload" >
 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>
-            <button class="btn btn-success" type="submit" id="submit_upload_b"><i class="icon-share"></i> 导入</button>
+            <button class="btn btn-success" type="submit" id="submit_upload_b" ><i class="icon-share"></i> 导入</button>
           </div>
           </form>
         </div><!-- /.modal-content -->
