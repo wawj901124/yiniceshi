@@ -45,6 +45,9 @@ class TestCaseAdmin(object):
     list_display_links = ['test_project','case_title',]   #设置点击链接进入编辑页面的字段
     # date_hierarchy = 'add_time'   #详细时间分层筛选，未生效
     show_detail_fields = ['test_project','case_title',]   #显示数据详情
+    list_export = ('xls',)  #控制列表页导出数据的可选格式
+    show_bookmarks = True   #控制是否显示书签功能
+    # data_charts = ""    #控制显示图标的样式
 
     #设置是否加入导入插件
     import_excel = True   #True表示显示使用插件，False表示不显示使用插件，该import_excel变量会覆盖插件中的变量
