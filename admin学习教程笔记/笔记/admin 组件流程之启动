@@ -1,0 +1,12 @@
+Admin的实现流程：
+    1.启动:
+            import admin
+            def autodiscover():  #autodiscover为自动覆盖模块
+                autodiscover_modules('admin', register_to=site)   #加载django中每个叫admin.py的文件 ，这就是启动部分
+
+            这个autodiscover()函数就是admin的启动部分，扫描每一个admin.py文件，其实就是加载
+            执行每一个app下的admin.py文件
+    2.注册：
+            单例模式或者叫单例对象
+            单例模式：实例出一个对象，共用一套数据
+    3.设计url
